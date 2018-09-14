@@ -2,12 +2,10 @@ package com.examples.java.io;
 
 import java.io.*;
 
-public class ReadConsole {
+public class ReadConsoleDataWithStreamEx {
 
 	public static void main(String args[]) throws IOException {
-		InputStreamReader cin = null;
-		
-		
+		InputStreamReader cin = null;		
 
 		try {
 			cin = new InputStreamReader(System.in);

@@ -2,7 +2,7 @@ package com.examples.java.io;
 
 import java.util.Scanner;
 
-public class ConsoleScanner 
+public class ReadConsoleDataWithScannerEx 
 {
 	public static void main(String args[]) 
 	{
