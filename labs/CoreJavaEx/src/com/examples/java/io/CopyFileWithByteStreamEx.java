@@ -1,12 +1,15 @@
 package com.examples.java.io;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import com.examples.java.exception.CustomFileException;
+
 public class CopyFileWithByteStreamEx {
 
-   public static void main(String args[]) throws IOException {  
+   public static void main(String args[]) throws CustomFileException, IOException {  
       FileInputStream in = null;
       FileOutputStream out = null;
 
@@ -16,13 +19,20 @@ public class CopyFileWithByteStreamEx {
          
          int c;
          while ((c = in.read()) != -1) {
-        	 System.out.println(c);
             out.write(c);
-         }
-         
+         }         
+  
          System.out.println("File copied successfully.");         
-         
-      }finally {
+       
+      }catch(FileNotFoundException e)
+      {
+    	  throw new CustomFileException("Error occured - file not found - " + e.getMessage());
+    	 // System.out.println("Error occured - file not found - " + e.getMessage());
+    	 // e.printStackTrace();
+      }
+      
+      finally {
+    	  System.out.println("Finally called...");
          if (in != null) {
             in.close();
          }
