@@ -7,36 +7,55 @@ import com.examples.java.model.Employee;
 
 public class EmployeeService {
 
-	List employees = new ArrayList();
+	List<Employee> employees = new ArrayList<Employee>();
 
 	public boolean add(Employee employee) {
 		return employees.add(employee);
 	}
 
 	public Employee get(int id) {
-		Employee employee = null;
-		for (Object item : employees) {
-			employee = (Employee) item;
+		//Employee employee = null;
+		
+		for (Employee employee : employees) {
 			if (employee.getId() == id) {
 				return employee;
-			}
+			}			
 		}
+		
+		
+		
+//		for (Object item : employees) {
+//			employee = (Employee) item;
+//			if (employee.getId() == id) {
+//				return employee;
+//			}
+//		}
 		return null;
 	}
 
-	public List getAll() {
+	public List<Employee> getAll() {
 		return employees;
 	}
 
 	public boolean update(Employee employee) {
 		boolean isUpdateSuccess = false;
-		for (Object item : employees) {
-			if (((Employee) item).getId() == employee.getId()) {
+		
+		for (Employee emp : employees) {
+			if(emp.getId() == employee.getId())
+			{
 				employees.remove(employee);
 				isUpdateSuccess = employees.add(employee);
 				break;
 			}
 		}
+		
+//		for (Object item : employees) {
+//			if (((Employee) item).getId() == employee.getId()) {
+//				employees.remove(employee);
+//				isUpdateSuccess = employees.add(employee);
+//				break;
+//			}
+//		}
 		return isUpdateSuccess;
 	}
 
