@@ -31,7 +31,8 @@ public class EmployeeManagementMain {
 				System.out.println("3. Update Employee");
 				System.out.println("4. Delete Employee");
 				System.out.println("5. View All Employees");
-				System.out.println("6. Exit");
+				System.out.println("6. Reports and Statistics");
+				System.out.println("7. Exit");
 
 				System.out.print("\nEnter your option: ");
 				option = scanner.nextInt();
@@ -54,6 +55,9 @@ public class EmployeeManagementMain {
 						listEmployees();
 						break;
 					case 6:
+						printStatistics();
+						break;
+					case 7:
 						exit();
 						break;
 					default:
@@ -66,7 +70,7 @@ public class EmployeeManagementMain {
 
 				// System.out.print("\nDo you want to continue (Y/N)?");
 				// doRepeat = scanner.next();
-			} while (option != 6);
+			} while (option != 7);
 			// while (doRepeat != null && doRepeat.equalsIgnoreCase("Y"));
 
 			// } catch (Exception e) {
@@ -196,6 +200,11 @@ public class EmployeeManagementMain {
 
 		System.out.format("\n%5d %15s %5d %15s %15s %15s", emp.getId(), emp.getName(), emp.getAge(),
 				emp.getDesignation(), emp.getDepartment(), emp.getCountry());
+	}
+	
+	private static void printStatistics()
+	{
+		System.out.println("No of employees age greater than fourty: " + empService.getEmployeeCountAgeGreaterThan40());
 	}
 
 	private static void exit() {

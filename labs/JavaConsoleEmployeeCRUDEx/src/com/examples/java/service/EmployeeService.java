@@ -2,6 +2,8 @@ package com.examples.java.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import com.examples.java.model.Employee;
 
@@ -16,21 +18,13 @@ public class EmployeeService {
 	public Employee get(int id) {
 		//Employee employee = null;
 		
-		for (Employee employee : employees) {
-			if (employee.getId() == id) {
-				return employee;
-			}			
-		}
-		
-		
-		
-//		for (Object item : employees) {
-//			employee = (Employee) item;
+//		for (Employee employee : employees) {
 //			if (employee.getId() == id) {
 //				return employee;
-//			}
+//			}			
 //		}
-		return null;
+//		
+		return employees.stream().filter(emp -> emp.getId() == id).findFirst().get();
 	}
 
 	public List<Employee> getAll() {
@@ -47,7 +41,7 @@ public class EmployeeService {
 				isUpdateSuccess = employees.add(employee);
 				break;
 			}
-		}
+		}		
 		
 //		for (Object item : employees) {
 //			if (((Employee) item).getId() == employee.getId()) {
@@ -62,5 +56,9 @@ public class EmployeeService {
 	public boolean delete(Employee emp) {
 		return employees.remove(emp);
 	}
-
+	
+	public long getEmployeeCountAgeGreaterThan40()
+	{
+		return employees.stream().filter(emp -> emp.getAge() > 40).count();
+	}
 }
