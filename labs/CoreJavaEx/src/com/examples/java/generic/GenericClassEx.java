@@ -12,8 +12,8 @@ public class GenericClassEx<T> {
 	}
 
 	public static void main(String[] args) {
-		GenericClassEx<Integer> integerBox = new GenericClassEx<Integer>();
-		GenericClassEx<String> stringBox = new GenericClassEx<String>();
+		GenericClassEx<Integer> integerBox = new GenericClassEx<>();
+		GenericClassEx<String> stringBox = new GenericClassEx<>();
 
 		integerBox.add(new Integer(10));
 		stringBox.add(new String("Hello World"));

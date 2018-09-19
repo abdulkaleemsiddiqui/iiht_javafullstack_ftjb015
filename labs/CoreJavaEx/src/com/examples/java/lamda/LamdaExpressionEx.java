@@ -1,4 +1,4 @@
-package com.example.java.lamda;
+package com.examples.java.lamda;
 
 public class LamdaExpressionEx {
 
@@ -21,7 +21,7 @@ public class LamdaExpressionEx {
 	      System.out.println("10 - 5 = " + lamExp.operate(10, 5, subtraction));
 	      System.out.println("10 x 5 = " + lamExp.operate(10, 5, multiplication));
 	      System.out.println("10 / 5 = " + lamExp.operate(10, 5, division));
-			
+	      
 	      //without parenthesis
 	      GreetingService greetService1 = message ->
 	      System.out.println("Hello " + message);
@@ -45,4 +45,5 @@ public class LamdaExpressionEx {
 	   private int operate(int a, int b, MathOperation mathOperation) {
 	      return mathOperation.operation(a, b);
 	   }
+
 	}
