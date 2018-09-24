@@ -1,6 +1,5 @@
 package com.examples.java;
 
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -157,7 +156,7 @@ public class EmployeeManagementMain {
 
 	private static void listEmployees() {
 
-		List empList = empService.getAll();
+		List<Employee> empList = empService.getAll();
 
 		printHeader();
 
@@ -204,7 +203,14 @@ public class EmployeeManagementMain {
 	
 	private static void printStatistics()
 	{
-		System.out.println("No of employees age greater than fourty: " + empService.getEmployeeCountAgeGreaterThan40());
+		System.out.println("No of employees older than fourty years: " + empService.getEmployeeCountAgeGreaterThan(40));
+		System.out.println("List employee IDs older than fourty years: " + empService.getEmployeeIdsAgeGreaterThan(40));
+		System.out.println("Employee count by Department: " + empService.getEmployeeCountByDepartment());
+		System.out.println("Employee count by Department ordered: " + empService.getEmployeeCountByDepartmentOdered());
+		System.out.println("Average Employee Age by Department: " + empService.getAvgEmployeeAgeByDept());
+		System.out.println("List Departments have more than 3 employees: " + empService.getDepartmentsHaveEmployeesMoreThan(3));
+		
+		// Print Departments which is having more than 3 employees
 	}
 
 	private static void exit() {

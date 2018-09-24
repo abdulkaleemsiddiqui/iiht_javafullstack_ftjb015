@@ -7,6 +7,21 @@ public class Employee {
 	String designation;
 	String department;
 	String country;
+	
+	public Employee()
+	{
+		
+	}
+	
+	public Employee(int id, String name, int age, String designation, String department, String country)
+	{
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.designation = designation;
+		this.department = department;
+		this.country = country;
+	}
 
 	public int getId() {
 		return id;
