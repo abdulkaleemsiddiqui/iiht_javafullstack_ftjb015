@@ -26,9 +26,13 @@ public class JdbcEx {
 			// STEP 4: Execute a query
 			System.out.println("Creating statement...");
 			stmt = conn.createStatement();
-			String sql;
-			sql = "SELECT id, name, age FROM employee";
-			ResultSet rs = stmt.executeQuery(sql);
+//			conn.prepareStatement(sql)
+			String sql1, sql2;
+			sql1 = "SELECT id, name, age, designation FROM employee";
+//			 sql1 = "SELECT id, name, age FROM employee WHERE age >= 35 AND department='Admin' ORDER BY name";
+			 sql2 = "UPDATE employee SET designation='Lead' WHERE id=3";
+			boolean status = stmt.execute(sql2);
+			ResultSet rs = stmt.executeQuery(sql1);
 
 			// STEP 5: Extract data from result set
 			while (rs.next()) {
@@ -36,11 +40,15 @@ public class JdbcEx {
 				int id = rs.getInt("id");
 				int age = rs.getInt("age");
 				String name = rs.getString("name");
+				String designation = rs.getString("designation");
 				
 				// Display values
 				System.out.print("ID: " + id);
 				System.out.print(", Age: " + age);
 				System.out.print(", Name: " + name);
+				System.out.print(", Designation: " + designation);
+				
+				System.out.println();
 			}
 			// STEP 6: Clean-up environment
 			rs.close();
