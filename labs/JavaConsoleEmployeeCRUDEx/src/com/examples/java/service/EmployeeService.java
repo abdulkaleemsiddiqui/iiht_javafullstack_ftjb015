@@ -9,11 +9,13 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import com.examples.java.dao.EmployeeDAO;
 import com.examples.java.model.Employee;
 
 public class EmployeeService {
 
 	Map<Integer, Employee> employees = new HashMap<>();
+	EmployeeDAO employeeDao = new EmployeeDAO();
 
 	public EmployeeService() {
 		employees.put(100, new Employee(100, "Anil", 45, "Delivery Manager", "Operations", "India"));
@@ -25,26 +27,31 @@ public class EmployeeService {
 	}
 
 	public boolean add(Employee employee) {
-		return employees.put(employee.getId(), employee) != null ? true : false;
+//		return employees.put(employee.getId(), employee) != null ? true : false;
+		return employeeDao.createEmployee(employee);
 	}
 
 	public Employee get(int id) {
-		return employees.get(id);
+//		return employees.get(id);
+		return employeeDao.getEmployee(id);
 	}
 
 	public List<Employee> getAll() {
-		return new ArrayList<>(employees.values());
+//		return new ArrayList<>(employees.values());
+		return employeeDao.getAllEmployees();
 	}
 
 	public boolean update(Employee employee) {
-		return employees.put(employee.getId(), employee) != null ? true : false;
+//		return employees.put(employee.getId(), employee) != null ? true : false;
+		return employeeDao.updateEmployee(employee);
 	}
 
 	public boolean delete(Employee emp) {
-		return employees.remove(emp.getId()) != null ? true : false;
+//		return employees.remove(emp.getId()) != null ? true : false;
+		return employeeDao.deleteEmployee(emp.getId());
 	}
 
-	// Get Employee count greater than give age
+	// Get Employee count greater than given age
 	public long getEmployeeCountAgeGreaterThan(int age) {
 		return employees.values().stream().filter(emp -> emp.getAge() > age).count();
 	}
@@ -103,4 +110,13 @@ public class EmployeeService {
 				.map(Map.Entry::getKey)
 				.collect(Collectors.toList());			
 	}
+	
+	// Get Employee names starting with given string
+	public List<String> getEmployeeNamesStartsWith(String prefix) {
+		return employees.values()
+				.stream()
+				.filter(emp -> emp.getName().startsWith(prefix))
+				.map(emp -> emp.getName())
+				.collect(Collectors.toList());
+	}	
 }

@@ -7,6 +7,7 @@ import com.examples.java.exception.EmployeeValidationException;
 import com.examples.java.exception.NoEmployeeFoundException;
 import com.examples.java.model.Employee;
 import com.examples.java.service.EmployeeService;
+import com.examples.java.util.DataSource;
 
 public class EmployeeManagementMain {
 
@@ -87,13 +88,13 @@ public class EmployeeManagementMain {
 		Employee emp = new Employee();
 
 		System.out.println("\nEnter employee details...");
-		System.out.print("Enter id: ");
-		try {
-			int id = Integer.parseInt(scanner.next());
-			emp.setId(id);
-		} catch (NumberFormatException e) {
-			throw new EmployeeValidationException("Invalid input for id. Please enter integer value.");
-		}
+//		System.out.print("Enter id: ");
+//		try {
+//			int id = Integer.parseInt(scanner.next());
+//			emp.setId(id);
+//		} catch (NumberFormatException e) {
+//			throw new EmployeeValidationException("Invalid input for id. Please enter integer value.");
+//		}
 
 		captureDetail(emp);
 
@@ -209,11 +210,14 @@ public class EmployeeManagementMain {
 		System.out.println("Employee count by Department ordered: " + empService.getEmployeeCountByDepartmentOdered());
 		System.out.println("Average Employee Age by Department: " + empService.getAvgEmployeeAgeByDept());
 		System.out.println("List Departments have more than 3 employees: " + empService.getDepartmentsHaveEmployeesMoreThan(3));
+		System.out.println("List Employees starts with 'S':" + empService.getEmployeeNamesStartsWith("S"));
 		
 		// Print Departments which is having more than 3 employees
 	}
 
 	private static void exit() {
+		// Close connection
+		DataSource.closeConnection();
 		System.out.println("\nThank you!!!");
 		System.exit(0);
 	}
