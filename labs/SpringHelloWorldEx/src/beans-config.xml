@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- more bean definitions go here -->
+
+	<bean id="greetings" class="com.examples.spring.core.Greetings">
+<!-- 		<constructor-arg name="message" value="Hello World" />
+		<constructor-arg name="name" value="Saravana" /> -->
+	</bean>
+	
+	<!-- <bean id="greetings" class="com.examples.spring.core.Greetings" factory-method="getGreetings"> </bean> -->	
+
+<!-- 	<bean id="serviceLocator" class="com.examples.spring.core.DefaultServiceLocator" />
+
+	<bean id="greetingService" class="com.examples.spring.core.GreetingService"
+		factory-bean="serviceLocator" factory-method="createGreetingService" />
+
+	<bean id="accountService" class="com.examples.spring.core.AccountService"
+		factory-bean="serviceLocator" factory-method="createAccountService" /> -->
+
+</beans>
