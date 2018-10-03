@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="empService" class="com.examples.java.service.EmployeeService" autowire="constructor" />
+
+	<bean id="empDao" class="com.examples.java.dao.EmployeeDAO" autowire="constructor" />
+	
+	<bean id="datasource" class="com.examples.java.util.DataSource" scope="singleton">
+		<property name="driverName" value="com.mysql.jdbc.Driver" />
+		<property name="dbUrl" value="jdbc:mysql://localhost/jdbctraining" />
+		<property name="userName" value="training" />
+		<property name="password" value="training" />
+	</bean>	
+	
+</beans>
