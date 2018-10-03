@@ -1,0 +1,104 @@
+<!-- <?xml version = "1.0" encoding = "UTF-8"?> -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="greetings" class="com.examples.spring.core.Greetings"> <!-- init-method="init" destroy-method="cleanup"> -->
+		<property name="message" value="Welcome to Spring Framework Training :)"/>		
+	</bean>
+
+	<bean id="greetings1" class="com.examples.spring.core.Greetings">
+		<constructor-arg name="message" value="Welcome to Spring Framework Training :) Constructor argumnet"> </constructor-arg>
+	</bean>
+	
+	<bean id="greetings2" class="com.examples.spring.core.Greetings">
+		<!-- Constructor resolution based on name -->
+		<constructor-arg name="message1" value="Welcome to Spring Framework Training :)" />
+		<constructor-arg name="message2" value="Constructor arguments resolution example" />
+		
+		<!-- Constructor resolution based on type -->
+<!-- 		<constructor-arg type="String" value="Welcome to Spring Framework Training :)" />
+		<constructor-arg type="String" value="Constructor arguments resolution example" /> -->
+		
+		<!-- Constructor resolution based on type -->
+<!-- 		<constructor-arg index="0" value="Welcome to Spring Framework Training :)" />
+		<constructor-arg index="1" value="Constructor arguments resolution example" /> -->
+	</bean>
+	
+	<bean id="greetingService" class="com.examples.spring.core.bean.GreetingService" factory-method="createInstance">
+		<constructor-arg name="message" value="Welcome to Spring Framework Training :)" />	
+		<!-- <property name="message" value="Welcome to Spring Framework Training :)" /> -->
+	</bean>
+	
+	<bean id="greetingServiceLocator" class="com.examples.spring.core.bean.GreetingServiceLocator" />
+	
+	<bean id="greetingService1" class="com.examples.spring.core.bean.GreetingServiceImpl" factory-bean="greetingServiceLocator" factory-method="createGreetingServiceInstance">
+		<property name="message" value="Welcome to Spring Framework Training :)" />
+	</bean>
+	
+   <!-- Injecting collection -->
+   <bean id = "collectionInjectionEx" class = "com.examples.spring.core.injection.CollectionInjectionEx">
+      
+      <!-- results in a setAddressList(java.util.List) call -->
+      <property name = "addressList">
+         <list>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </list>
+      </property>
+
+      <!-- results in a setAddressSet(java.util.Set) call -->
+      <property name = "addressSet">
+         <set>
+            <value>INDIA</value>
+            <value>Pakistan</value>
+            <value>USA</value>
+            <value>USA</value>
+         </set>
+      </property>
+
+      <!-- results in a setAddressMap(java.util.Map) call -->
+      <property name = "addressMap">
+         <map>
+            <entry key = "1" value = "INDIA"/>
+            <entry key = "2" value = "Pakistan"/>
+            <entry key = "3" value = "USA"/>
+            <entry key = "4" value = "USA"/>
+         </map>
+      </property>
+      
+      <!-- results in a setAddressProp(java.util.Properties) call -->
+      <property name = "addressProp">
+         <props>
+            <prop key = "one">INDIA</prop>
+            <prop key = "two">Pakistan</prop>
+            <prop key = "three">USA</prop>
+            <prop key = "four">USA</prop>
+         </props>
+      </property>
+   </bean>	
+				 
+	<bean id="person" class="com.examples.spring.core.autowire.Person">
+		<property name="name" value="Kumar" />
+		<property name="age" value="25" />
+		<property name="location" value="Bengaluru" />
+	</bean>
+		
+	<!-- Auto-wiring by name --> 
+	<bean id="customer" class="com.examples.spring.core.autowire.Customer" autowire="byName">
+	</bean>
+	
+	<!-- Auto-wiring by type --> 
+<!-- 	<bean id="customer" class="com.examples.spring.core.autowire.Customer" autowire="byType">
+	</bean>	 -->
+
+	<!-- Auto-wiring by constructor --> 
+<!-- 	<bean id="customer" class="com.examples.spring.core.autowire.Customer" autowire="constructor">
+	   <property name="person"></property> 
+	</bean>	-->
+
+</beans>
