@@ -2,24 +2,36 @@ package com.examples.spring.core.bean;
 
 public class GreetingService {
 
-	private static GreetingService greetingsService = new GreetingService();
-	private String message;
-
-	private GreetingService() {
-
+	private String message = "Hello World from Greeting Service";
+	private static GreetingService greetingService;
+	
+	public String getMessage() {
+		return message;
 	}
-
-	public static GreetingService createInstance(String message) {
-		greetingsService.setMessage(message);
-		return greetingsService;
-	}
-
-	public void setMessage(String message) {
+	
+	public void setMessage(String message)
+	{
 		this.message = message;
 	}
 
-	public void getMessage() {
-
-		System.out.println("Your Message : " + message);
+	// Static Factory method to create GreetingService instance
+	public static GreetingService getInstance() {
+		if (greetingService == null)
+		{
+			greetingService = new GreetingService();
+//			greetingService.setMessage("Hello World from Greeting Service - Static Factory Method Example");
+		}
+		return greetingService;
 	}
+
+	// Overloaded Static Factory method with argument
+	public static GreetingService getInstance(String message) {
+		if (greetingService == null)
+		{
+			greetingService = new GreetingService();
+			greetingService.setMessage(message);
+		}
+		return greetingService;
+	}
+
 }

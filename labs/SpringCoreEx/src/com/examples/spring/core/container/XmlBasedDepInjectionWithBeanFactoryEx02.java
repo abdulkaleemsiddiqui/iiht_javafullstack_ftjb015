@@ -10,16 +10,16 @@ public class XmlBasedDepInjectionWithBeanFactoryEx02 {
 
 	public static void main(String[] args) {
 
-//		 Creating IoC container supplying configuration file from file system
+		// Creating IoC container supplying configuration file from file system
 		BeanFactory container = new XmlBeanFactory(new FileSystemResource("src/beans-config.xml"));
-		
-//		Retrieving the bean from container		
+
+		// Retrieving the bean from container
 		Greetings obj = (Greetings) container.getBean("greetings");
 		obj.setMessage("Instantiated BeanFactory based IoC container supplying configuration from file system.");
-		
-//		Display message		
+
+		// Display message
 		obj.getMessage();
-	
+
 	}
 
 }

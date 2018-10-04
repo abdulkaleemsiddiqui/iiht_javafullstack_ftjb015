@@ -10,16 +10,12 @@
    
    <context:annotation-config/>
    
-<!--    <context:component-scan base-package="com.examples.spring.core.annotation"></context:component-scan> -->
+   <context:component-scan base-package="com.examples.spring.core.annotation" />
 				 
-	<bean id="person" class="com.examples.spring.core.annotation.Person">
+<!-- 	<bean id="person" class="com.examples.spring.core.annotation.Person">
 		<property name="name" value="Kumar" />
 		<property name="age" value="25" />
 		<property name="location" value="Bengaluru" />
-	</bean>
-	
-	<bean id="customer" class="com.examples.spring.core.annotation.Customer" >
-<!-- 		<property name="person" ref="person" /> -->
-	</bean>
+	</bean> -->
 
 </beans>

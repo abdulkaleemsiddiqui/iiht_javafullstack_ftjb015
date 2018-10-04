@@ -8,9 +8,9 @@ public class Customer {
 		
 	}
 
-	public Customer(Person person) {
+/*	public Customer(Person person) {
 		this.person = person;
-	}
+	}*/
 
 	public Person getPerson() {
 		return person;

@@ -2,7 +2,7 @@ package com.examples.spring.core.annotation;
 
 import org.springframework.stereotype.Component;
 
-//@Component
+@Component
 public class Person 
 {
 	String name;
