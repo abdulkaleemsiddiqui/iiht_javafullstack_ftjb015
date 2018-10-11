@@ -38,7 +38,7 @@ public class LoginController {
 		if (login.getUserName().equalsIgnoreCase("admin") && login.getPassword().equalsIgnoreCase("admin@123")) {
 
 			//return new ModelAndView("success");
-			return new ModelAndView("redirect:/employee");
+			return new ModelAndView("redirect:/employee/list");
 		} else {
 			return new ModelAndView("failure");
 		}

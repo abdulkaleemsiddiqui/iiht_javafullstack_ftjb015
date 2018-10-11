@@ -2,11 +2,11 @@
 <%@ page session="false" %>
 <html>
 <head>
-	<title>Login Success</title>
+	<title>Employee Added</title>
 </head>
 <body>
 <h1>
-	Login Success!  
+	Employee Added!  
 </h1>
 
 </body>

@@ -1,6 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
@@ -21,6 +21,7 @@
 }
 </style>
 
+
 <!-- <body>
 	Employee Add Form
 </body> -->
@@ -36,11 +37,12 @@
 	<span>Welcome <strong> <c:out value="${userName}" /> </strong></span>
 	
 	<h2>Add Employee</h2>
-	<form:form method="POST" action="employee" modelAttribute="employee">
+
+	<form:form method="POST" action="employee" modelAttribute="employee" >
 		<form:errors path="*" cssClass="errorblock" element="div" />
 		<table>
 			<tr>
-				<td><form:label path="name">Name:</form:label></td>
+				<td><form:label path="name" >Name:</form:label></td>
 				<td><form:input path="name" /> <form:errors path="name"
 						cssClass="error" /></td>
 			</tr>
