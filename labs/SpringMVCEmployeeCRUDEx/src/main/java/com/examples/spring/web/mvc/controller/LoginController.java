@@ -1,7 +1,5 @@
 package com.examples.spring.web.mvc.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,32 +15,32 @@ import com.examples.spring.web.mvc.model.Login;
 @Controller
 public class LoginController {
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)	
+	@ModelAttribute("login")
+	public Login createLoginModel()
+	{
+		return new Login();
+	}
+
+	@RequestMapping(name = "loginMapping", value = "/login", method = RequestMethod.GET )
 	public ModelAndView login() {
 
-		return new ModelAndView("login", "command", new Login());
-	}	
-	
-//	@RequestMapping(value = "/login", method = RequestMethod.GET)
-//	public String login() {
-//		System.out.print("Login controller invoked");		
-//		return "login";
-//	}
-	
-	
-	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ModelAndView authenticate(@ModelAttribute Login login) {
-		
-		System.out.println(login.getUserName() + " " + login.getPassword());
-		
-		if(login.getUserName().equalsIgnoreCase("admin") && login.getPassword().equalsIgnoreCase("admin@123"))
-		{
+		// Controller Returns...
+		// String - Logical view name
+		// View Object - implements View interface
+		// ModelAndView - consists for logical view name and model
 
-			return new ModelAndView("success");
-		}
-		else
-		{
+		return new ModelAndView("login");
+	}
+
+	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
+	public ModelAndView authenticate(@ModelAttribute Login login, Model model) {
+
+		if (login.getUserName().equalsIgnoreCase("admin") && login.getPassword().equalsIgnoreCase("admin@123")) {
+
+			//return new ModelAndView("success");
+			return new ModelAndView("redirect:/employee");
+		} else {
 			return new ModelAndView("failure");
-		}	
+		}
 	}
 }

@@ -11,9 +11,9 @@
 <br>
 <h2>Login</h2>
 
-<spring:url value="/" var="contextPath" htmlEscape="true" />
+<spring:url value="/authenticate" var="contextPath" htmlEscape="true" />
 
-<form:form method="POST" action="${contextPath}/authenticate">
+<form:form method="POST" action="${contextPath}" modelAttribute="login">
    <table>
     <tr>
         <td><form:label path="userName">UserName:</form:label></td>
